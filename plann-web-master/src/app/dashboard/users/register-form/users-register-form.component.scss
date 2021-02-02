@@ -1,0 +1,23 @@
+@import "../../../../styles";
+
+.user-form {
+  label, span {
+    position: relative;
+    top:5px;
+    color: $primary-default;
+  }
+
+  .user-department {
+    position: relative;
+
+    .add-button {
+      position: absolute;
+      right: 20px;
+      top: 3px;
+      color: $secundary-default;
+      border-color: $secundary-default;
+      background: white;
+      padding-right: 0;
+    }
+  }
+}

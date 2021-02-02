@@ -1,0 +1,38 @@
+@import "../../../styles";
+
+.client-group {
+  position: relative;
+
+  .add-button {
+    position: absolute;
+    top: 3px;
+    right: 20px;
+    color: $secundary-default;
+    background: white;
+    padding: 1px
+  }
+}
+
+
+.btn-div-colors {
+    padding: 5px 15px 5px 5px;
+    margin-right: 10px;
+
+    .btn-colors {
+        float: left;
+        width: 20px;
+        height: 20px;
+
+        &::after{
+            content: "";
+        }
+    }
+}
+
+.form-radius {
+    label, input {
+        position: relative;
+        top: 8px;
+        margin: 0px 2px;
+    }
+}

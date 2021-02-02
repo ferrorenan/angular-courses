@@ -1,0 +1,64 @@
+@import "../../../../styles";
+
+.lists-panel {
+  padding: 40px;
+  height: calc(100% - 134px);
+  overflow-y: auto;
+  background: $terceary-light;
+
+  h1 {
+    font-weight: bold;
+    font-size: 32px;
+    margin-left: 10px;
+    margin-bottom: 30px;
+    margin-top: 0px;
+    color: $primary-default;
+  }
+
+  .users-list {
+
+    li {
+      cursor: pointer;
+      float: left;
+      width: 255px;
+      height: 90px;
+      background: $contrast;
+      margin: 10px;
+      padding: 15px 15px 15px 30px;
+      position: relative;
+
+      img {
+        float: left;
+        margin-top: 5px;
+        margin-right: 10px;
+        margin-left: -10px;
+      }
+
+      h4 {
+        font-size: 18px;
+        font-weight: bold;
+        color: $primary-default;
+        margin-bottom: 0px;
+        width: calc(100% - 105px);
+        height: 20px;
+        overflow: hidden;
+      }
+      p {
+        font-size: 12px;
+      }
+    }
+
+    .list-null {
+      background: none;
+      width: 100%;
+      font-size: 20px;
+      text-align: center;
+      color: $primary-default;
+      font-weight: bold;
+
+      &:before {
+        display: none;
+      }
+    }
+  }
+}

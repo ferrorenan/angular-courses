@@ -1,0 +1,142 @@
+<div [popover]="taskDetail" [placement]="'right'" [outsideClick]="true" #pop="bs-popover" container="body"
+     class="task border-radius" [ngStyle]="style.task">
+
+    <h3 class="task-title text-negative">{{subTask.text}}</h3>
+
+    <p class="task-complement text-negative">
+        Client{{subTask.id}} - {{subTask.task.project.name}}
+    </p>
+
+    <div *ngIf="!isHoldingTask">
+
+        <div class="task-inputs task-inputs-estimated" [ngStyle]="style.estimatedBox"
+             [class.z-index]="!style.estimatedBox.isBigger" mwlResizable
+             [validateResize]="validate" [resizeEdges]="resizableConfig.edges"
+             [enableGhostResize]="resizableConfig.ghostResize" [resizeSnapGrid]="resizableConfig.snapGrid"
+             (resizeEnd)="estimatedBoxOnResizeEnd($event)">
+
+            <div class="tasks-informations">
+                <h4 class="task-time-title text-negative">Estimado</h4>
+
+                <label for="task{{subTask.id}}-estimated-time" class="sr-only">Tempo estimado</label>
+                <input id="task{{subTask.id}}-estimated-time" type="tel" value="00h00"
+                       class="no-input disable-clicks task-input-time"> <!--TODO add time mask-->
+                <span>-</span>
+                <label for="task{{subTask.id}}-estimated-value" class="sr-only">Valor estimado</label>
+                <input id="task{{subTask.id}}-estimated-value" type="tel" value="R$ 2.400,00"
+                       class="no-input disable-clicks task-input-value"> <!--TODO add money mask-->
+            </div>
+        </div>
+
+        <div class="task-inputs task-inputs-worked" [ngStyle]="style.workedBox"
+             [class.z-index]="!style.workedBox.isBigger" mwlResizable
+             [validateResize]="validate" [resizeEdges]="resizableConfig.edges"
+             [enableGhostResize]="resizableConfig.ghostResize" [resizeSnapGrid]="resizableConfig.snapGrid"
+             (resizeEnd)="workedBoxOnResizeEnd($event)">
+
+            <div class="tasks-informations">
+
+                <h4 class="task-time-title text-negative">Trabalhado</h4>
+
+                <label for="task{{subTask.id}}-worked-time" class="sr-only">Tempo trabalhado</label>
+                <input id="task{{subTask.id}}-worked-time" type="tel" value="00h00"
+                       class="no-input disable-clicks task-input-time"> <!--TODO add time mask-->
+                <span>-</span>
+                <label for="task{{subTask.id}}-worked-value" class="sr-only">Valor trabalhado</label>
+                <input id="task{{subTask.id}}-worked-value" type="tel" value="R$ 2.400,00"
+                       class="no-input disable-clicks task-input-value"> <!--TODO add money mask-->
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<ng-template #taskDetail>
+
+    <div class="task-edit-speed">
+        <div class="row">
+            <div class="col-xs-12 margin-bottom">
+                <label for="task{{subTask.id}}-name" class="text-primary">Nome da Tarefa</label>
+                <input #taskNameInput id="task{{subTask.id}}-name" class="form-control">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-5">
+                <label for="task{{subTask.id}}-detail-estimated-time" class="text-muted">
+                    <i class="glyphicon glyphicon-time"></i>
+                    Estimado
+                </label>
+                <input id="task{{subTask.id}}-detail-estimated-time" type="tel" value="00h00" class="form-control">
+                <!--TODO add time mask-->
+            </div>
+            <div class="col-xs-5">
+                <label for="task{{subTask.id}}-detail-spent-time" class="text-muted">
+                    <i class="glyphicon glyphicon-time"></i>
+                    Trabalhado
+                </label>
+                <input id="task{{subTask.id}}-detail-spent-time" type="tel" value="00h00" class="form-control">
+                <!--TODO add time mask-->
+            </div>
+            <div class="col-xs-2">
+                <a class="icons icon-play">
+                    <!-- icon-stop -->
+                    <i class="glyphicon glyphicon-play"></i>
+                    <!--glyphicon glyphicon-stop-->
+                    <!--TODO add start/stop task chronometer-->
+                </a>
+            </div>
+        </div>
+
+        <div (mouseover)="openTaskEditButtons()" (mouseout)="closeTaskEditButtons()">
+
+            <div class="task-icons border-radius-right" [style.background]="subTask.task.project.color">
+                <ul class="list-unstyled">
+                    <li [ngStyle]="style.modalLine">
+                        <i class="glyphicon glyphicon-pencil"></i>
+                    </li>
+                    <li [ngStyle]="style.modalLine">
+                        <i class="glyphicon glyphicon glyphicon-remove"></i>
+                    </li>
+                    <li [ngStyle]="style.modalLine">
+                        <i class="glyphicon glyphicon-chevron-right"></i>
+                    </li>
+                    <li>
+                        <i class="glyphicon glyphicon-resize-full"></i>
+                    </li>
+                </ul>
+            </div>
+
+            <div [collapse]="!showDetails" class="task-icons-full border-radius-right"
+                 [style.background]="subTask.task.project.color">
+                <ul class="list-unstyled">
+                    <li [ngStyle]="style.modalLine" class="list-unstyled">
+                        <button type="button" (click)="openTaskDetailModal(); pop.hide()" class="no-input">
+                            <i class="glyphicon glyphicon-pencil"></i>
+                            editar detalhes
+                        </button>
+                    </li>
+                    <li [ngStyle]="style.modalLine">
+                        <button type="button" (click)="removeTask(); pop.hide()" class="no-input">
+                            <i class="glyphicon glyphicon glyphicon-remove"></i>
+                            apagar tarefa
+                        </button>
+                    </li>
+                    <li [ngStyle]="style.modalLine">
+                        <button type="button" (click)="moveToNextWeek(); pop.hide()" class="no-input">
+                            <i class="glyphicon glyphicon-chevron-right"></i>
+                            mover próx. semana
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" (click)="divideTask(); pop.hide()" class="no-input">
+                            <i class="glyphicon glyphicon-resize-full"></i>
+                            dividir tarefa
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</ng-template>

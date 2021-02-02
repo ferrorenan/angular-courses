@@ -1,0 +1,105 @@
+<section class="reports-header">
+    <div class="reports-container">
+        <form [formGroup]="reportFilterForm" class="reports-filters row">
+
+            <legend class="text-uppercase col-xs-1">filtros</legend>
+
+            <div class="col-xs-2">
+                <ng-select [allowClear]="true" [items]="users" (selected)="userSelected($event)"
+                           placeholder="Todos os usuários">
+                </ng-select>
+            </div>
+
+            <div class="col-xs-2">
+                <ng-select [allowClear]="true" [items]="clients" (selected)="clientSelected($event)"
+                           placeholder="Todos os clientes">
+                </ng-select>
+            </div>
+
+            <div class="col-xs-2">
+                <ng-select [allowClear]="true" [items]="projects" (selected)="projectSelected($event)"
+                           placeholder="Todos os projetos">
+                </ng-select>
+            </div>
+
+            <div class="col-xs-2 reports-tags">
+                <label for="filter-tags" class="text-uppercase text-right">tags</label>
+                <input id="filter-tags" formControlName="tags" class="form-control">
+            </div>
+
+            <div class="col-xs-3 reports-date">
+                <label class="text-uppercase">Período</label>
+
+                <div class="date-filter">
+                    <label for="fromDate" class="sr-only">Data Início</label>
+                    <input id="fromDate" type="date" formControlName="periodFrom" class="no-input">
+                    <span>até</span>
+                    <label for="toDate" class="sr-only">Data Final</label>
+                    <input id="toDate" type="date" formControlName="periodTo" class="no-input">
+                </div>
+
+                <button class="btn btn-success" (click)="getReport()">
+                    <i class="glyphicon glyphicon-chevron-right"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<section class="reports-tasks">
+    <div class="reports-container">
+
+        <div class="reports-titles">
+            <h1 class="text-uppercase"><i class="glyphicon glyphicon-signal"></i> relatório geral</h1>
+            <span>Entre os dias {{reportFilterForm.value['periodFrom'] | amDateFormat: 'DD/MM/YYYY'}}
+            a {{reportFilterForm.value['periodTo'] | amDateFormat: 'DD/MM/YYYY'}}</span>
+
+            <div class="pull-right">
+                <button (click)="sendByEmail()" class="btn btn-default"><i class="glyphicon glyphicon-send"></i> Enviar por e-mail</button>
+                <button (click)="savePdf()" class="btn btn-default"><i class="glyphicon glyphicon-save"></i> Salvar em PDF</button>
+                <button (click)="printReport()" class="btn btn-default"><i class="glyphicon glyphicon-print"></i> Imprimir</button>
+            </div>
+        </div>
+
+        <div class="reports-table">
+
+            <div class="reports-table-title row border-radius">
+                <span class="col-xs-3">Data</span>
+                <span class="col-xs-2">Tarefa</span>
+                <span class="col-xs-2">Cliente</span>
+                <span class="col-xs-1">Projeto</span>
+                <span class="col-xs-1">Estimado</span>
+                <span class="col-xs-1">Trabalhado</span>
+                <span class="col-xs-2">Status</span>
+            </div>
+
+            <div class="reports-table-tasks row" *ngFor="let period of report">
+                <h2>{{period.date | amDateFormat: 'MMMM'}}</h2>
+
+                <ul class="list-unstyled">
+                    <li *ngFor="let task of period.tasks" class="row reports-table-item"
+                        style="border-left-color:red;">
+                        <!--Alterar a cor de acordo com o projeto-->
+
+                        <div class="col-xs-3">
+                            <label for="task{{task.id}}-report" class="plann-checkbox">
+                                <input id="task{{task.id}}-report" type="checkbox" [(ngModel)]="task.done">
+                            </label>
+                            <span class="reports-table-item-date">{{task.created_at | amDateFormat: 'DD MMM YYYY'}}</span>
+                            <img src="http://via.placeholder.com/30x30" alt="Nome do Usuário" class="img-circle">
+                            <span class="reports-table-item-user">{{task.user}}</span>
+                        </div>
+                        <span class="col-xs-2">{{task.text}}</span>
+                        <div class="col-xs-2">
+                            <span class="reports-table-item-client">{{task.client}}</span>
+                        </div>
+                        <span class="col-xs-1 reports-table-item-name">{{task.project}}</span>
+                        <span class="col-xs-1 text-muted"><i class="glyphicon glyphicon-time"></i> {{task.estimated | amDateFormat: 'HH:mm'}}</span>
+                        <span class="col-xs-1"><i class="glyphicon glyphicon-time"></i> {{task.worked | amDateFormat: 'HH:mm'}}</span>
+                        <span class="col-xs-2 text-muted reports-table-item-status">{{task.finish_date}}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

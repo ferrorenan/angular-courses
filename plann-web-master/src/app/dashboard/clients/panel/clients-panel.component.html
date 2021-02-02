@@ -1,0 +1,50 @@
+<section class="nav-control-lists">
+    <div class="row">
+        <div class="col-xs-2 col-search">
+            <label for="search-client" class="sr-only">buscar cliente</label>
+            <input #clientSearch (keyup)="0" id="search-client"
+                   placeholder="buscar cliente" class="form-control input-search text-uppercase">
+        </div>
+
+        <div class="col-xs-5">
+            <label (click)="toggleOverdueFilter()" class="plann-checkbox" [class.active]="filters.overdue">
+                <span class="text-uppercase">mostrar somente atrasados</span>
+            </label>
+            <span class="text-muted text-separator">|</span>
+
+            <label (click)="toggleArchivedFilter()" class="plann-checkbox" [class.active]="filters.archived">
+                <span class="text-uppercase">mostrar arquivados</span>
+            </label>
+        </div>
+
+        <div class="col-xs-3 text-right">
+            <span class="text-muted text-search text-uppercase">{{clients.length}} cliente(s) cadastrado(s)</span>
+        </div>
+
+        <div class="col-xs-2 text-right">
+            <button type="button" class="btn btn-block btn-success text-uppercase"
+                    (click)="modalsService.addClientModal()">
+                adicionar cliente
+            </button>
+        </div>
+    </div>
+</section>
+
+<section class="lists-panel">
+    <h1 *ngIf="filters.overdue || filters.archived" class="text-uppercase">{{listTitle}}</h1>
+    <ul class="list-unstyled clients-list">
+
+        <li *ngIf="!(clients | clientsFilter: clientSearch.value).length" class="list-null">
+            Nenhum cliente encontrado
+        </li>
+
+        <li *ngFor="let client of clients | clientsFilter: clientSearch.value" (click)="goToClientDetail(client)"
+            class="text-uppercase box-shadow-hover">
+            <h4>{{client.text}}</h4>
+            <p class="text-muted">
+                <span>4 projetos</span>
+                <span *ngIf="!filters.archived && !client.overdue">| 4 atrasados</span>
+            </p>
+        </li>
+    </ul>
+</section>

@@ -1,0 +1,33 @@
+<div class="modal-task-checklist">
+
+    <div class="row">
+        <div class="col-xs-10">
+            <label for="task-add-checklist-item" class="sr-only">Adicionar Itens</label>
+            <input #checklistItem id="task-add-checklist-item" placeholder="Adicione itens a sua checklist"
+                   class="form-control">
+        </div>
+        <div class="col-xs-2 text-right">
+            <button type="button" (click)="addChecklistItem(checklistItem.value)" class="btn btn-success">
+                <i class="glyphicon glyphicon-ok"></i>
+            </button>
+        </div>
+    </div>
+
+    <div [dragula]="'checklist-items'" [dragulaModel]="checklist" class="modal-task-checklist-list scrollbox">
+        <div *ngFor="let item of checklist" class="row task-checklist">
+
+            <div class="col-xs-9">
+                <label for="{{item.id}}checklist-item" class="plann-checkbox">
+                    <input id="{{item.id}}checklist-item" type="checkbox">
+                    <span>{{item.title}}</span>
+                </label>
+            </div>
+
+            <div class="col-xs-3 text-hover text-right">
+                <button type="button" (click)="removeChecklistItem(item)" class="no-input text-danger">excluir</button>
+                <i class="glyphicon glyphicon-sort"></i>
+            </div>
+        </div>
+    </div>
+
+</div>

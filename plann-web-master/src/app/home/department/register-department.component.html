@@ -1,0 +1,33 @@
+<h1 class="box-title">Último Passo!</h1>
+<p>Cadastre seus dados como colaborador da empresa</p>
+
+<form [formGroup]="departmentRegisterForm" (submit)="doDepartmentRegister()" class="form-horizontal">
+
+    <div class="form-group">
+        <div class="col-sm-12">
+            <label class="sr-only" for="name">Qual seu departamento?</label>
+            <input placeholder="Qual seu departamento?" formControlName="name" class="form-control input-lg"
+                   id="name">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-12">
+            <label class="sr-only" for="job">Qual seu cargo na empresa?</label>
+            <input placeholder="Qual seu cargo na empresa?" formControlName="job" class="form-control input-lg"
+                   id="job">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-12">
+            <p>Ao se Cadastrar você aceita os
+                <a routerLink="../../../termos-uso">termos e condições de uso</a>.
+            </p>
+        </div>
+        <!--TODO check how it'll show the usage terms-->
+    </div>
+
+    <button class="btn btn-success btn-lg btn-block btn-border-bottom">Comece a usar o Plann!</button>
+</form>
+

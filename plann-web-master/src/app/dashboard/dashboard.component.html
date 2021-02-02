@@ -1,0 +1,79 @@
+<header class="navbar navbar-static-top nav-blue">
+
+    <div class="navbar-header">
+        <a routerLink="calendario">
+            <img src="assets/logo-plann.svg" alt="Plann.io">
+        </a>
+    </div>
+
+    <nav class="navbar-menu">
+
+        <ul class="nav navbar-nav navbar-left text-uppercase">
+            <li>
+                <a routerLink="calendario" routerLinkActive="active">
+                    <i class="glyphicon glyphicon-calendar"></i> Calendário
+                </a>
+            </li>
+            <li>
+                <a routerLink="clientes" routerLinkActive="active">
+                    <i class="glyphicon glyphicon-th"></i> Clientes
+                </a>
+            </li>
+            <li>
+                <a routerLink="projetos" routerLinkActive="active">
+                    <i class="glyphicon glyphicon-briefcase"></i> Projetos
+                </a>
+            </li>
+            <li>
+                <a routerLink="usuarios" routerLinkActive="active">
+                    <i class="glyphicon glyphicon-user"></i> Usuários
+                </a>
+            </li>
+            <li>
+                <a routerLink="relatorios" routerLinkActive="active">
+                    <i class="glyphicon glyphicon-stats"></i> Relatórios
+                </a>
+            </li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+            <!--<li>
+                <a title="Notificações" class="link-icon">
+                    <i class="glyphicon glyphicon-globe"></i>
+                </a>
+            </li>
+            <li>
+                <a title="Configurações da Conta" class="link-icon">
+                    <i class="glyphicon glyphicon-cog"></i>
+                </a>
+            </li>-->
+
+            <li>
+                <a title="Configurações do Usuário" container="body" #userConfigPopoverOpened="bs-popover"
+                   [popover]="userConfigPopover" [placement]="'bottom'" [outsideClick]="true">
+                    <img src="http://via.placeholder.com/38x38" alt="Nome do Usuário" class="img-circle">
+                </a>
+
+                <ng-template #userConfigPopover>
+
+                    <ul class="scrollbox list-unstyled lists-users">
+                        <li (click)="goToUserDetails(); userConfigPopoverOpened.hide()">
+                            <span>Alterar meus dados</span>
+                        </li>
+                        <li (click)="userConfigPopoverOpened.hide()">
+                            <span>Ajuda</span>
+                        </li>
+                        <li (click)="userConfigPopoverOpened.hide()">
+                            <span>Dê suas sugestões</span>
+                        </li>
+                        <li (click)="doLogout(); userConfigPopoverOpened.hide()">
+                            <span>Fazer logout</span>
+                        </li>
+                    </ul>
+                </ng-template>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<router-outlet></router-outlet>

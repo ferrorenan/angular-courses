@@ -1,0 +1,18 @@
+<div class="history-content">
+    <ul class="list-unstyled history-date" *ngFor="let history of histories">
+        <li class="history-title">
+            <b>{{history.day | amDateFormat:'DD/MM/YYYY'}}</b>
+        </li>
+
+        <li class="history-list">
+            <ul class="list-unstyled">
+                <li class="row" *ngFor="let change of history.changes">
+                    <span class="history-list-date text-muted">{{change.time | amDateFormat:'HH:ss'}}</span>
+                    <span class="history-list-pin"><i class="history-list-circle"></i></span>
+                    <a class="history-list-img"><img alt="Nome do Usuário" class="img-circle" src="http://via.placeholder.com/30x30"></a>
+                    <span class="history-list-description" [innerHTML]="change.text"></span>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>

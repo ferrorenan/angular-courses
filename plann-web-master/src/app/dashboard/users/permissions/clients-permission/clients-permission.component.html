@@ -1,0 +1,42 @@
+<div class="row client-permission">
+    <h3 class="text-uppercase">Selecione todos ou escolha os clientes específicos</h3>
+
+    <div class="client-header-permission">
+        <div class="row">
+            <div class="col-xs-8">
+                <!--<span>Todos clientes</span>-->
+                <input type="text" class="form-control" placeholder="buscar por cliente">
+            </div>
+            <div class="col-xs-4">
+                <label for="all-clients-permission" class="sr-only"></label>
+                <select id="all-clients-permission" class="form-control">
+                    <option value="">Permissão</option>
+                    <option *ngFor="let permission of permissions" [value]="permission.id">{{permission.text}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+
+    <ul class="list-unstyled client-list-permission">
+        <li *ngFor="let client of clients" class="row">
+            <div class="col-xs-8">
+                <span>{{client.text}}</span>
+            </div>
+            <div class="col-xs-4">
+                <label for="client-{{client.id}}-permission" class="sr-only">Permissão do {{client.text}}</label>
+                <select id="client-{{client.id}}-permission" class="form-control input-sm">
+                    <option value="">Permissão</option>
+                    <option *ngFor="let permission of permissions" [value]="permission">{{permission.text}}</option>
+                </select>
+            </div>
+        </li>
+    </ul>
+
+
+    <div *ngIf="showSaveButton" class="division"></div>
+
+    <div class="text-right footer-form">
+        <button *ngIf="showSaveButton" class="btn btn-success" (click)="saveClientsPermission()">Salvar</button>
+    </div>
+</div>

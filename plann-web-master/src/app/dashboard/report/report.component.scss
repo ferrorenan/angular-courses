@@ -1,0 +1,208 @@
+@import "../../../styles";
+
+.reports-container {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.reports-header {
+  background: $terceary-little-light;
+  padding: 20px 0px;
+
+  .reports-filters > div {
+    padding: 0px 5px;
+  }
+
+  legend {
+    border:none;
+    font-size: 12px;
+    position: relative;
+    top: 10px;
+    color: $terceary-dark;
+    font-weight: 700;
+  }
+
+  input {
+    display: inline-block;
+  }
+
+  label {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    color: $terceary-dark;
+  }
+
+  .reports-tags {
+    label {
+      margin-left: 10px;
+    }
+    .form-control {
+      margin-left: 10px;
+      width: 130px;
+    }
+  }
+  .reports-date {
+    > label {
+      margin-right: 10px;
+    }
+    .date-filter {
+      background: white;
+      border: 1px solid $terceary-default;
+      color: $primary-default;
+      border-radius: 4px;
+      display: inline-block;
+      padding: 6px 10px 6px;
+
+      span {
+        color: $primary-default;
+      }
+      input {
+        font-size: 14px;
+        width: 75px;
+        color: $primary-default;
+      }
+    }
+
+    .btn {
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+  }
+}
+
+.reports-tasks {
+  background: $terceary-light;
+  height: calc(100vh - 138px);
+  padding-top: 40px;
+
+  .reports-container {
+    width: 1240px;
+    padding: 40px 60px;
+    background: white;
+
+    .reports-titles {
+      h1 {
+        display: inline-block;
+        font-weight: bold;
+        font-size: 20px;
+        color: $primary-default;
+        margin-right: 30px;
+      }
+
+      span {
+        font-size: 14px;
+        color: $primary-default;
+      }
+
+      .pull-right {
+        margin-top: 15px;
+
+        .btn {
+          padding-left: 20px;
+          padding-right: 20px;
+          margin-left: 5px;
+          margin-right: 5px;
+
+          i {
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+
+    .reports-table {
+      padding: 0px 15px;
+
+      .reports-table-title {
+        margin-top: 20px;
+        padding: 5px 0;
+        background: $terceary-light;
+        color: $terceary-dark;
+        font-weight: normal;
+        font-size: 14px;
+
+        span:first-child {
+          padding-left: 70px;
+        }
+      }
+
+      .reports-table-tasks {
+        h2 {
+          font-size: 20px;
+          font-weight: 700;
+          color: $primary-default;
+        }
+
+
+        .reports-table-item {
+          font-size: 13px;
+          font-weight: 600;
+          color: $primary-default;
+          border-left: 4px solid;
+          border-bottom: 1px solid $terceary-little-light;
+          margin: 0 5px;
+          padding: 7px 0;
+
+          &:first-child {
+            border-top: 2px solid $terceary-little-light;
+          }
+
+          .plann-checkbox {
+            width: 20px;
+            height: 20px;
+            float: left;
+            margin-right: 20px;
+            margin-top: 3px;
+
+            input {
+              &:after {
+                font-size: 12px;
+                padding-left: 1px;
+                padding-top: 1px;
+                width: 20px;
+                height: 20px;
+              }
+            }
+          }
+
+          img {
+            float: left;
+            margin-left: 10px;
+            margin-right: 5px;
+          }
+
+          span {
+            float: left;
+            position: relative;
+            top: 5px;
+            text-transform: capitalize;
+          }
+
+          .reports-table-item-date {
+            padding-right: 20px;
+          }
+
+          .reports-table-item-user {
+            max-width: 60px;
+            height: 16px;
+            overflow: hidden;
+          }
+
+          .reports-table-item-client {
+            font-size: 12px;
+            padding: 3px 10px;
+            background: $terceary-light;
+            color: $terceary-dark;
+            border-radius: 5px;
+            display: inline-block;
+          }
+
+          .reports-table-item-status {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+}

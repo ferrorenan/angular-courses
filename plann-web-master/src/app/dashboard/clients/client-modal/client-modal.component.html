@@ -1,0 +1,23 @@
+<div class="modal-header border-radius-top">
+    <div class="modal-title text-center text-uppercase">
+        <h4><b>adicionando um novo cliente</b></h4>
+    </div>
+</div>
+
+<form [formGroup]="addClientForm" (ngSubmit)="registerClient()" class="form-horizontal">
+    <div class="row modal-content-inner">
+        <div class="form-group">
+            <label for="client-name" class="col-xs-4 text-right">Nome do Cliente</label>
+            <div class="col-xs-6">
+                <input id="client-name" formControlName="name" class="form-control">
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="col-xs-12 text-right pull-right">
+            <button type="button" class="btn btn-default" (click)="closeClientRegisterModal()">Cancelar</button>
+            <button class="btn btn-success">Salvar</button>
+        </div>
+    </div>
+</form>

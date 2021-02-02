@@ -1,0 +1,88 @@
+<div class="modal-tasks-day">
+
+    <div class="modal-tasks-day-header">
+        <div class="row">
+            <div class="col-xs-3">
+                <button type="button" class="text-success no-input text-capitalize add-tasks"
+                        (click)="taskService.addTask(taskStatus)">
+                    <i class="glyphicon glyphicon-plus icon-border"></i>
+                    Adicionar
+                </button>
+            </div>
+            <div class="col-xs-4">
+                <p class="text-muted">Prazo Final</p>
+            </div>
+            <div class="col-xs-2">
+                <p class="text-muted">
+                    <i class="glyphicon glyphicon-time"></i>
+                    Estimado
+                </p>
+            </div>
+            <div class="col-xs-2">
+                <p class="text-muted">
+                    <i class="glyphicon glyphicon-time"></i>
+                    Trabalhado
+                </p>
+            </div>
+            <!--<div class="col-xs-1 text-right">-->
+                <!--<i class="glyphicon glyphicon-search icon-border"></i>-->
+            <!--</div>-->
+        </div>
+    </div>
+
+    <ul class="list-unstyled modal-tasks-day-list scrollbox">
+        <li *ngFor="let task of tasks | taskOverviewTabFilter: taskStatus" class="row">
+            <div class="col-xs-3 no-padding">
+                <label for="task{{task.id}}-status" class="plann-checkbox">
+                    <input id="task{{task.id}}-status" type="checkbox">
+                    <span>{{task.text}}</span>
+                </label>
+            </div>
+            <div class="col-xs-4">
+                <label for="task{{task.id}}-due-date" class="sr-only">Prazo Final</label>
+                <input id="task{{task.id}}-due-date" type="date" class="form-control">
+            </div>
+
+            <div class="col-xs-2">
+                <label for="task{{task.id}}-estimated-time" class="sr-only">Estimado</label>
+                <input id="task{{task.id}}-estimated-time" type="time" class="form-control">
+            </div>
+
+            <div class="col-xs-2">
+                <label for="task{{task.id}}-spent-time" class="sr-only">Trabalhado</label>
+                <input id="task{{task.id}}-spent-time" type="time" class="form-control">
+            </div>
+
+            <div class="col-xs-1 text-right">
+                <i class="glyphicon glyphicon-cloud icon-border"></i>
+                <i class="glyphicon glyphicon-adjust icon-border" [popover]="editTaskPopover" [placement]="'bottom'"
+                   [outsideClick]="true" #pop="bs-popover" container="body"></i>
+            </div>
+
+            <ng-template #editTaskPopover>
+                <ul>
+                    <li (click)="taskService.removeTask(task)">Excluir</li>
+                    <li (click)="plannModalsService.taskDetailModal(task)">Editar</li>
+                </ul>
+            </ng-template>
+
+        </li>
+    </ul>
+
+    <div class="row modal-tasks-day-footer">
+        <div class="col-xs-3">
+            <p><strong>{{ tasks.length }} cadastradas/{{ countTasksDone() }} finalizadas</strong></p>
+        </div>
+
+        <div class="col-xs-2">
+            <label for="project{{project.id}}-estimated-total-time" class="sr-only">Estimado Total</label>
+            <input id="project{{project.id}}-estimated-total-time" type="tel" value="999h99" class="no-input disable-clicks">
+            <!--TODO add time mask-->
+        </div>
+        <div class="col-xs-2">
+            <label for="project{{project.id}}-spent-total-time" class="sr-only">Trabalhado Total</label>
+            <input id="project{{project.id}}-spent-total-time" type="tel" value="999h99" class="no-input disable-clicks">
+            <!--TODO add time mask-->
+        </div>
+    </div>
+</div>

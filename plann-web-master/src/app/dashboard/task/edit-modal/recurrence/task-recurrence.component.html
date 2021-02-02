@@ -1,0 +1,47 @@
+<form [formGroup]="recurrenceForm">
+
+    <span>Repetição</span>
+    <ng-select [allowClear]="recurrence.selected[0].text !== 'Nenhuma'" [items]="recurrence.types"
+               placeholder="Selecione a recorrência" [active]="recurrence.selected"
+               (selected)="selectRecurrenceType($event)" (removed)="recurrence.clearRecurrence()">
+    </ng-select>
+
+    <div *ngIf="recurrence.selected[0].text === 'Semanal'">
+        Repete a cada
+        <div *ngFor="let day of weekDays">
+            <input id="{{day}}-recurrence-weekly" type="checkbox" formControlName="repetition">
+            <label for="{{day}}-recurrence-weekly">{{day}}</label>
+        </div>
+    </div>
+
+    <div>
+        Início
+        <label for="recurrence-start"></label>
+        <input id="recurrence-start" type="date" formControlName="start">
+    </div>
+
+    <div>
+        Termina
+        <div>
+            Sempre
+            <label for="recurrence-finish-always"></label>
+            <input id="recurrence-finish-always" type="radio" formControlName="end" value="always">
+        </div>
+
+        <div>
+            Em
+            <label for="recurrence-finish-in"></label>
+            <input id="recurrence-finish-in" type="radio" formControlName="end" value="in">
+
+            <label for="recurrence-finish-date"></label>
+            <input id="recurrence-finish-date" type="date"
+                   [disabled]="recurrenceForm.controls['end'].value !== 'in'">
+        </div>
+    </div>
+
+</form>
+
+<div>
+    <span>Resumo: </span>
+    <span>{{recurrence.summary}}</span>
+</div>

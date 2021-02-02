@@ -1,0 +1,12 @@
+@import "../../../../styles";
+
+.client-modal-content {
+    padding-top: 40px;
+    padding-bottom: 20px;
+
+    label {
+        position: relative;
+        top: 5px;
+        color: $primary-default;
+    }
+}

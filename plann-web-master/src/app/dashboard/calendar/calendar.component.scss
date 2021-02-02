@@ -1,0 +1,239 @@
+@import "../../../styles";
+
+.sidebar {
+  background: $terceary-little-light;
+  border-right: 2px solid $terceary-default;
+  height: calc(100vh - 58px);
+  min-height: 525px;
+  max-width: 212px;
+  padding: 20px 10px;
+
+  .sidebar-title {
+    font-size: 19px;
+    font-weight: lighter;
+    color: $primary-dark;
+    margin: 0px 0px 20px 0px;
+  }
+
+  .sidebar-form {
+    padding-bottom: 20px;
+    border-bottom: 2px dotted $terceary-dark;
+
+    .form-group {
+      margin-bottom: 10px;
+      position: relative;
+
+      .add-button {
+        border-color: $secundary-default;
+        color: $secundary-default;
+        position: absolute;
+        right: 21px;
+        top: 5px;
+        padding: 0px;
+        background: $contrast;
+      }
+    }
+  }
+
+  .sidebar-tasks {
+    padding: 20px 0px 0px 0px;
+
+    .tasks-waiting {
+      height: calc(100vh - 425px);
+      min-height: 200px;
+      overflow-y: auto;
+    }
+  }
+}
+
+.calendar-board {
+  width: calc(100% - 212px);
+}
+
+.calendar-control {
+  background: $terceary-little-light;
+  padding: 20px;
+
+  .btn-default {
+    border-color: $contrast;
+
+    &.btn-users {
+      margin-top: 3px;
+    }
+
+  }
+
+  .calendar-control-week {
+    .btn-default {
+      float: left;
+      margin: 5px;
+    }
+
+    .calendar-week-data {
+      float: left;
+      margin: 3px 15px;
+      color: $primary-default;
+
+      strong {
+        font-size: 14px;
+      }
+
+      p {
+        margin-bottom: 0px;
+      }
+    }
+  }
+
+  .calendar-times {
+    display: inline-block;
+
+    p {
+      margin-bottom: -5px;
+    }
+
+    &:first-child {
+      .calendar-week-hours {
+        float: right;
+        text-align: right;
+        max-width: 95px;
+      }
+
+      .calendar-week-value {
+        float: right;
+        text-align: right;
+      }
+    }
+
+    &:last-child {
+      .calendar-week-hours {
+        float: left;
+        text-align: left;
+
+      }
+      .calendar-week-value {
+        float: left;
+        text-align: left;
+
+      }
+    }
+
+    .calendar-week-hours {
+      font-size: 20px;
+      font-weight: bold;
+      color: $primary-default;
+      max-width: 95px;
+    }
+
+    .calendar-week-value {
+      font-size: 12px;
+      margin-top: 8px;
+      max-width: 80px;
+    }
+  }
+}
+
+.calendar-header-week {
+  background: $terceary-light;
+
+  .calendar-header-day {
+    border-right: 1px solid $terceary-little-light;
+    border-bottom: 1px solid $terceary-little-light;
+    padding: 10px 10px;
+    position: relative;
+
+    .calendar-header-title {
+      font-size: 14px;
+      color: $primary-default;
+      text-transform: capitalize;
+    }
+
+    .calendar-header-information {
+
+      span {
+        float: left;
+        margin: 0px 2px;
+      }
+
+      input {
+        float: left;
+        width: 48px;
+        font-size: 12px;
+        color: $primary-default;
+      }
+    }
+
+    .calendar-header-day-number {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      font-size: 32px;
+      color: $terceary-little-light;
+      letter-spacing: -1px;
+    }
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+}
+
+
+
+.calendar-week {
+  height: calc(100vh - 205px);
+  overflow-y: auto;
+  position: relative;
+
+  .calendar-day {
+    height: 100%;
+    padding: 10px;
+    border-right: 1px solid $terceary-little-light;
+    background: url("../../../assets/background-calendar.jpg");
+  }
+}
+
+.lists-users {
+  margin-top: 10px;
+  min-width: 200px;
+  max-height: 150px;
+  overflow-y: auto;
+  position: relative;
+
+  li {
+    padding: 5px 10px;
+    font-size: 12px;
+    border-bottom: 1px solid $terceary-little-light;
+
+    a {
+      color: $primary-default;
+      font-family: $font-family;
+      text-transform: uppercase;
+      display: inline-block;
+
+      img {
+        float: left;
+      }
+
+      span {
+        max-width: 150px;
+        margin-top: 5px;
+        margin-left: 5px;
+        height: 14px;
+        overflow: hidden;
+        float: left;
+      }
+    }
+  }
+}
+
+.users-not-found {
+  font-weight: bold;
+  font-size: 14px;
+  color: $primary-default;
+  text-align: center;
+  display: block;
+  padding: 30px 0px 10px;
+  width: calc(100% - 30px);
+  position: absolute;
+}

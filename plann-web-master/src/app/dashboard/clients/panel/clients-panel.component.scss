@@ -1,0 +1,84 @@
+@import "../../../../styles";
+
+.lists-panel {
+  padding: 40px;
+  height: calc(100% - 134px);
+  overflow-y: auto;
+  background: $terceary-light;
+
+  h1 {
+    font-weight: bold;
+    font-size: 32px;
+    margin-left: 10px;
+    margin-bottom: 30px;
+    margin-top: 0px;
+    color: $primary-default;
+  }
+
+  .clients-list {
+
+    li {
+      cursor: pointer;
+      float: left;
+      width: 255px;
+      height: 90px;
+      background: $contrast;
+      margin: 10px;
+      padding: 15px 15px 15px 30px;
+      position: relative;
+
+      h4 {
+        font-size: 18px;
+        font-weight: bold;
+        color: $primary-default;
+        margin-bottom: 0px;
+        width: calc(100% - 45px);
+        height: 20px;
+        overflow: hidden;
+      }
+      p {
+        font-size: 12px;
+
+        span:nth-child(2){
+          position: relative;
+
+          &:after {
+            content: "  ";
+            width: 7px;
+            height: 7px;
+            float: left;
+            position: absolute;
+            background: $negative-default;
+            right: -10px;
+            top: 5px;
+            border-radius: 50%;
+          }
+        }
+      }
+
+      &:before {
+        content: "  ";
+        width: 5px;
+        height: 40px;
+        top: 25px;
+        left: 0px;
+        float: left;
+        position: absolute;
+        background: $secundary-default;
+      }
+    }
+
+    .list-null {
+      background: none;
+      width: 100%;
+      font-size: 20px;
+      text-align: center;
+      color: $primary-default;
+      font-weight: bold;
+
+      &:before {
+        display: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,676 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i');
+
+$font-family: 'Open Sans', sans-serif;
+
+$primary-default: #2e465a;
+$primary-default-hover: #273b4d;
+$primary-dark: #0e2231;
+$primary-light: #357fb8;
+
+$secundary-default: #3ea141;
+$secundary-light: #6ec06f;
+
+$terceary-default: #c8d0db;
+$terceary-default-placeholder: #617f98;
+$terceary-default-task: #9eabb8;
+$terceary-dark: #798d9e;
+$terceary-little-light: #d7dce2;
+$terceary-little-light-modal: #e2eaf0;
+$terceary-light: #f2f4f7;
+
+$negative-default: #f43634;
+
+$contrast: #fff;
+
+body, html {
+  height: 100vh;
+  min-width: 1280px;
+  font-family: $font-family;
+}
+
+a {
+  color: $secundary-default;
+}
+
+a:hover {
+  color: $secundary-default;
+}
+
+.border-radius {
+  border-radius: 5px;
+}
+
+.border-radius-top {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.border-radius-bottom {
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.border-radius-right {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+/*Text AND Icons*/
+.text-negative {
+  color: $contrast;
+}
+
+.text-muted {
+  color: $terceary-default-placeholder;
+}
+
+.text-primary {
+  color: $primary-default;
+}
+
+.text-success {
+  color: $secundary-default;
+}
+
+.icon-border {
+  border-radius: 5px;
+  border: 2px solid;
+  padding: 4px 4px 5px 5px;
+  font-size: 10px;
+}
+
+/*End Text*/
+
+/*Inputs*/
+.form-control {
+  box-shadow: none;
+  border-color: $terceary-default;
+  color: $primary-dark;
+  font-weight: lighter;
+  font-family: $font-family;
+}
+
+.form-control::-webkit-input-placeholder {
+  color: $terceary-default-placeholder;
+}
+
+.form-control:-moz-placeholder { /* Firefox 18- */
+  color: $terceary-default-placeholder;
+}
+
+.form-control::-moz-placeholder { /* Firefox 19+ */
+  color: $terceary-default-placeholder;
+}
+
+.no-input {
+  background: none;
+  border: none;
+  width: auto;
+}
+
+.disable-clicks {
+  pointer-events: none;
+}
+
+/*End Inputs*/
+
+/*Btns*/
+.btn-transition:hover {
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-property: color, background-color;
+  transition-property: color, background-color;
+}
+
+.btn:active {
+  box-shadow: none;
+}
+
+.btn-success {
+  background: $secundary-light;
+  border-color: $secundary-light;
+
+  &:hover {
+    background: $secundary-light;
+    border-color: $secundary-light;
+  }
+  &.btn-border-bottom {
+    border-bottom-color: $secundary-default;
+  }
+}
+
+.btn-primary {
+  background: $contrast;
+  border:2px solid $terceary-default-task;
+  color: $primary-default;
+
+  &:hover {
+    background: $contrast;
+    border:2px solid $primary-default;
+    color: $primary-default;
+  }
+
+  &.active {
+    background: $primary-default;
+    color: $contrast;
+    border:2px solid $primary-default;
+  }
+}
+
+.btn-default {
+  background: $contrast;
+  border-color: $terceary-default;
+  color: $primary-default;
+
+  &:hover, &:active, &:focus {
+    background: $contrast;
+    border-color: $terceary-default;
+    color: $primary-default;
+  }
+
+  &.btn-today {
+    font-weight: bold;
+    text-transform: uppercase;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  &.btn-users {
+    text-transform: uppercase;
+    position: relative;
+
+    span {
+      padding-right: 60px;
+    }
+
+    img {
+      position: absolute;
+      border: 4px solid;
+      border-color: $contrast;
+      top: -7px;
+      right: 35px;
+    }
+  }
+}
+
+.btn-border-bottom {
+  border-bottom: 3px solid;
+
+  &.btn-lg.btn-success {
+    border-bottom: 5px solid $secundary-default;
+  }
+}
+
+/*End Btns*/
+
+/* Modal */
+.modal {
+  .modal-header {
+    background: $terceary-little-light-modal;
+    color: $primary-default;
+
+    .modal-title {
+      h4 {
+        font-size: 22px;
+        display: inline-block;
+      }
+
+      .label {
+        font-size: 12px;
+        position: relative;
+        top: -5px;
+      }
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+  }
+
+  .nav-tabs {
+    margin: 0 15px;
+    text-align: center;
+    background: $terceary-light;
+    border-bottom: 1px solid $terceary-little-light;
+
+    li {
+      display: inline-block;
+      float: none;
+      margin: 0 20px;
+
+      .nav-link {
+        background: none;
+        border: none;
+        border-bottom: 3px solid $terceary-light;
+        padding: 10px 0;
+        color: $primary-default;
+        letter-spacing: -1;
+
+        &:hover, &.active {
+          background: none;
+          border: none;
+          border-bottom: 3px solid $secundary-light;
+        }
+      }
+    }
+  }
+
+  .modal-content-inner {
+    padding-top: 40px;
+    padding-bottom: 20px;
+
+    label {
+      position: relative;
+      top: 5px;
+      color: $primary-default;
+    }
+  }
+}
+
+/* End Modal*/
+
+/*Tasks*/
+.sidebar {
+  .task {
+    background: $terceary-default-task !important;
+  }
+}
+
+.tasks-lists {
+  .popover, .arrow {
+    border: none !important;
+  }
+}
+
+.calendar-control {
+  .popover-content {
+    min-height: 115px;
+  }
+}
+
+.task-modal {
+  width: 1170px;
+}
+
+/*ProgressBar*/
+.progress {
+  border-radius: 0;
+  margin-bottom: 0;
+  height: 10px;
+  margin-top: 5px;
+  box-shadow: none;
+}
+
+.progress-bar {
+  box-shadow: none;
+}
+
+/*Checkbox*/
+.plann-checkbox {
+  input {
+    visibility: hidden;
+
+    &:after {
+      width: 28px;
+      height: 28px;
+      content: " ";
+      border-radius: 5px;
+      border: 2px solid;
+      border-color: #d7dce2;
+      visibility: visible;
+      display: inline-block;
+      margin-top: -3px;
+
+    }
+    &:checked:after {
+      padding-left: 2px;
+      padding-top: 1px;
+      font-family: 'Glyphicons Halflings';
+      content: "\e013";
+      font-size: 18px;
+      color: $secundary-default;
+      border-color: $secundary-default;
+    }
+  }
+
+  span {
+    margin-left: 25px;
+    position: relative;
+    top: 5px;
+    font-weight: normal;
+  }
+}
+
+/*End Checkbox*/
+
+/*TextArea*/
+.fr-toolbar {
+  color: $terceary-default;
+  border-top: 0px;
+
+  &.fr-top {
+    box-shadow: none;
+  }
+
+  .fr-command {
+    &.fr-btn {
+      color: $primary-default;
+    }
+  }
+}
+
+.fr-box {
+  &.fr-basic {
+    &.fr-top {
+      .fr-wrapper {
+        box-shadow: none;
+        border-radius: 5px;
+        border: 3px solid $terceary-light;
+      }
+    }
+
+    .fr-element {
+      min-height: 180px;
+      max-height: 180px;
+      overflow-y: auto;
+    }
+  }
+  .fr-counter {
+    display: none;
+  }
+
+  &.fr-code-view {
+    textarea {
+      &.fr-code {
+        min-height: 180px;
+        max-height: 180px;
+        overflow-y: auto;
+      }
+    }
+  }
+}
+
+/*End TextArea*/
+
+/*Grid And Division*/
+.col-xs-1-7, .col-xs-2-4, .col-xs-3-5 {
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  float: left;
+}
+
+.col-xs-1-7 {
+  width: 14.28%;
+}
+
+.col-xs-2-4 {
+  width: 20%;
+}
+
+.col-xs-3-5 {
+  width: 29.1%;
+}
+
+.division {
+  float: left;
+  width: 100%;
+  height: 10px;
+  border-bottom: 2px solid $terceary-light;
+  margin: 10px 0px;
+}
+
+.form-horizontal {
+  .division {
+    margin: 10px 0px 25px;
+  }
+}
+
+.footer-form {
+  padding: 0px 20px;
+}
+
+.user-form {
+  .form-horizontal {
+    .form-group {
+      margin-right: -60px;
+    }
+  }
+}
+
+/*Box-shadow Scroll*/
+.scrollbox {
+  background: linear-gradient(white 30%, rgba(255, 255, 255, 0)),
+  linear-gradient(rgba(255, 255, 255, 0), white 70%) 0 100%,
+  radial-gradient(50% 0, farthest-side, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)),
+  radial-gradient(50% 100%, farthest-side, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)) 0 100%;
+  background: linear-gradient(white 30%, rgba(255, 255, 255, 0)),
+  linear-gradient(rgba(255, 255, 255, 0), white 70%) 0 100%,
+  radial-gradient(farthest-side at 50% 0, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)),
+  radial-gradient(farthest-side at 50% 100%, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0)) 0 100%;
+  background-repeat: no-repeat;
+  background-color: white;
+  background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
+
+  /* Opera doesn't support this in the shorthand */
+  background-attachment: local, local, scroll, scroll;
+}
+
+//dragula min css
+.gu-mirror {
+  position: fixed !important;
+  margin: 0 !important;
+  z-index: 9999 !important;
+  opacity: .8;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  filter: alpha(opacity=80)
+}
+
+.gu-hide {
+  display: none !important
+}
+
+.gu-unselectable {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important
+}
+
+.gu-transit {
+  opacity: .2;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+  filter: alpha(opacity=20)
+}
+
+// Top Pages Lists
+.nav-control-lists {
+  padding: 20px 40px;
+  background: $terceary-little-light;
+  color: $primary-default;
+
+  .input-search {
+    background: $terceary-little-light;
+    padding-left: 30px;
+    font-size: 12px;
+  }
+
+  .col-search {
+    &:after {
+      font-family: 'Glyphicons Halflings';
+      content: "\e003";
+      position: absolute;
+      left: 25px;
+      top: 7px;
+      color: $primary-default;
+      width: 10px;
+      height: 10px;
+    }
+  }
+
+  .text-search {
+    position: relative;
+    top: 8px;
+    font-size: 12px;
+  }
+
+  .text-separator {
+    position: relative;
+    top: 5px;
+    margin-left: 10px;
+    font-size: 12px;
+  }
+
+  .plann-checkbox {
+    position: relative;
+
+    span {
+      font-weight: bold;
+      letter-spacing: -1px;
+      font-size: 12px;
+    }
+
+    &:after {
+      position: absolute;
+      left: 5px;
+      top: 5px;
+      font-family: 'Glyphicons Halflings';
+      content: "\e157";
+      width: 10px;
+      height: 10px;
+      color: $primary-default;
+    }
+
+    &.active:after {
+      position: absolute;
+      left: 5px;
+      top: 5px;
+      font-family: 'Glyphicons Halflings';
+      content: "\e067";
+      font-size: 15px;
+      color: $primary-default;
+      border: none;
+    }
+  }
+}
+
+// box-shadow-hover
+.box-shadow-hover {
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: box-shadow, transform;
+  transition-property: box-shadow, transform;
+
+  &:hover {
+    box-shadow: 0 10px 10px -10px $terceary-default;
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+  }
+}
+
+// Progress bar Projects
+
+.project-bar {
+  .progress {
+    height: 5px;
+  }
+}
+
+// Tabs Pages
+
+.tabs-pages {
+  margin-left: -20px;
+  margin-right: -20px;
+  margin-top: 30px;
+
+  .tab-container {
+    .nav-tabs {
+      border-bottom: 2px solid $terceary-little-light;
+
+      .nav-item {
+        margin-bottom: -2px;
+
+        &:first-child {
+          margin-left: 20px;
+        }
+
+        a {
+          border-radius: 3px;
+          color: $terceary-default-task;
+          font-weight: bold;
+          text-transform: uppercase;
+          border: 2px solid white;
+          border-bottom-color: transparent;
+          font-size: 12px;
+        }
+
+        &:hover, &.active{
+          a {
+            border: 2px solid $terceary-little-light;
+            border-bottom-color: transparent;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Accordion Projects
+
+.panel-group {
+  margin-bottom:0;
+
+  .panel {
+    margin-bottom:0;
+    border-radius: 0;
+
+    &.panel-default {
+      border: none;
+      box-shadow: none;
+      border-bottom: 1px solid $terceary-little-light;
+      border-radius: 0;
+
+      .panel-heading{
+        &.card-header {
+          background: white;
+          border: none;
+          padding: 5px 0;
+        }
+      }
+    }
+
+    .panel-body{
+      padding: 0px;
+    }
+  }
+}
+
+// Modal User
+
+.add-user-modal {
+  .user-form {
+    padding-top: 40px;
+  }
+  .modal-footer {
+    margin-top: 20px;
+  }
+}
+
+// Modal Task
+.task-modal {
+  .tab-content {
+    .history-content {
+      max-width: 590px;
+      padding: 0 15px;
+    }
+  }
+}

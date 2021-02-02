@@ -1,0 +1,42 @@
+@import "../../../../../styles";
+
+.modal-task-checklist {
+  padding: 40px 40px;
+
+  .modal-task-checklist-list {
+    height: 280px;
+    overflow-y: auto;
+    margin-top: 20px;
+    margin-bottom: 0px;
+
+    .task-checklist {
+      border-bottom: 1px solid $terceary-light;
+      padding: 5px 0px 10px;
+      margin: 0px;
+
+      &:hover {
+        .text-hover {
+          display: block;
+        }
+      }
+    }
+
+    .text-hover {
+      display: none;
+      padding-top: 0px;
+
+      .text-danger {
+        font-size: 12px;
+        position: relative;
+        top: 5px;
+      }
+
+      i {
+        color: $terceary-light;
+        position: relative;
+        top: 7px;
+      }
+    }
+
+  }
+}

@@ -1,0 +1,138 @@
+<div class="modal-header border-radius-top">
+    <div class="modal-title text-center text-uppercase">
+        <h4>
+            <strong>Tarefa:</strong> {{task.text}}
+            <!--TODO add project status label-->
+        </h4>
+        <span class="label label-info">Em Desenvolvimento</span>
+        <!--
+            Em Espera
+            Finalizado
+            Em Desenvolvimento
+        -->
+    </div>
+
+    <button type="button" class="close" (click)="editModalRef.hide()" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<form [formGroup]="taskEditForm" (ngSubmit)="saveTaskEdition()">
+    <div class="row">
+
+        <tabset>
+            <tab heading="Tarefas">
+                <div class="col-xs-7 pull-right">
+                    <plann-task-detail></plann-task-detail>
+                </div>
+            </tab>
+            <tab heading="Descrição">
+                <div class="col-xs-7 pull-right">
+                    <plann-task-description></plann-task-description>
+                </div>
+            </tab>
+            <tab heading="Checklist">
+                <div class="col-xs-7 pull-right">
+                    <plann-task-checklist></plann-task-checklist>
+                </div>
+            </tab>
+            <tab heading="Recorrente">
+                <div class="col-xs-7 pull-right">
+                    <plann-task-recurrence></plann-task-recurrence>
+                </div>
+            </tab>
+            <tab heading="Histórico">
+                <div class="col-xs-7 pull-right">
+                    <plann-task-history></plann-task-history>
+                </div>
+            </tab>
+        </tabset>
+
+        <div class="col-xs-5 form-horizontal task-form-default">
+            <div class="form-group">
+                <label for="task{{task.id}}-name" class="col-xs-4 text-right">Tarefa</label>
+                <div class="col-xs-7">
+                    <input id="task{{task.id}}-name" formControlName="taskTitle" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="task{{task.id}}-due-date" class="col-xs-4 text-right">Prazo Final</label>
+                <div class="col-xs-4">
+                    <input id="task{{task.id}}-due-date" formControlName="dueDate" class="form-control">
+                </div>
+                <div class="col-xs-3">
+                    <p class="text-muted">(Faltam 10 dias)</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="task{{task.id}}-spent-time" class="col-xs-4 text-right">Tempo Total</label>
+                <div class="col-xs-3">
+                    <input id="task{{task.id}}-spent-time" formControlName="spentTime" class="form-control">
+                </div>
+                <div class="col-xs-3">
+                    <p class="text-muted">(Estimado)</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="task{{task.id}}-client" class="col-xs-4 text-right">Cliente</label>
+                <div class="col-xs-7">
+                    <ng-select [allowClear]="true" [items]="clients" (selected)="clientSelected($event)"
+                               placeholder="Escolha um Cliente?" id="task{{task.id}}-client">
+                    </ng-select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="task{{task.id}}-project" class="col-xs-4 text-right">Projeto</label>
+                <div class="col-xs-7">
+                    <ng-select [allowClear]="true" [items]="projects" (selected)="projectSelected($event)"
+                               placeholder="Escolha um Projeto?" id="task{{task.id}}-project">
+                    </ng-select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="task{{task.id}}-user" class="col-xs-4 text-right">Usuário</label>
+                <div class="col-xs-7">
+                    <ng-select [allowClear]="true" [items]="users" (selected)="userSelected($event)"
+                               placeholder="Escolha um Usuário?" id="task{{task.id}}-user">
+                    </ng-select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="task{{task.id}}-tags" class="col-xs-4 text-right">Tags</label>
+                <div class="col-xs-7">
+                    <input id="task{{task.id}}-tags" formControlName="tags" placeholder="tagA, tagB" class="form-control">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="row text-left">
+            <div class="col-xs-5">
+                <p>
+                    <b>Tarefa crada em:</b> 13/12/2015 às 14h09, por Renato Lopes <br/>
+                    <!--TODO get task creator and date-->
+                    <b>Última edição em:</b> 13/12/2015 às 14h09, por Matheus Henrique
+                    <!--TODO get task editor and date-->
+                </p>
+            </div>
+            <div class="col-xs-4">
+                <p>
+                    <b>Andamento das Tarefas</b> (70%) <!--TODO get/calculate task process-->
+                </p>
+                <progressbar [value]="task.progress" [type]="task.status"></progressbar>
+            </div>
+            <div class="col-xs-3 text-right">
+                <button type="button" class="btn btn-default" (click)="editModalRef.hide()">Cancelar</button>
+                <button class="btn btn-success">Salvar Tarefa</button>
+            </div>
+        </div>
+    </div>
+</form>
+

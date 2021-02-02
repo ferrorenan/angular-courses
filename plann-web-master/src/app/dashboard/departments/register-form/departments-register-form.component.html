@@ -1,0 +1,23 @@
+<div class="modal-header border-radius-top">
+    <div class="modal-title text-center text-uppercase">
+        <h4><b>adicionando um novo departamento</b></h4>
+    </div>
+</div>
+
+<form [formGroup]="registerForm" (ngSubmit)="registerDepartment()" class="form-horizontal">
+    <div class="row client-modal-content">
+        <div class="form-group">
+            <label for="department-name" class="col-xs-5 text-right">Nome do Departamento</label>
+            <div class="col-xs-5">
+                <input id="department-name" formControlName="name" class="form-control">
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div class="col-xs-12 text-right pull-right">
+            <button type="button" class="btn btn-default" (click)="cancelRegister()">Cancelar</button>
+            <button class="btn btn-success">Adicionar</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,68 @@
+@import "../../../../../styles";
+
+.client-permission {
+  max-width: 450px;
+  margin: 30px auto 0px;
+
+  h3 {
+    font-size: 15px;
+    color: $primary-default;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: -1px;
+  }
+
+  .client-header-permission {
+    margin: 20px 15px 0px 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid $terceary-light;
+
+    span {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      border: 1px solid $terceary-default;
+      font-size: 14px;
+      color: $primary-default;
+      border-radius: 5px;
+      display: block;
+      padding-left: 15px;
+      font-weight: 700;
+    }
+
+    select {
+      border:none;
+    }
+  }
+
+  .client-list-permission {
+    padding:0px 15px 0px;
+    height: 200px;
+    overflow-y: auto;
+
+    li {
+      margin: 5px 0px;
+      font-size: 12px;
+      border-bottom: 1px solid $terceary-light;
+
+      div:first-child {
+        padding-left: 0px;
+      }
+
+      div:last-child {
+        padding-left: 20px;
+        padding-right: 0px;
+      }
+
+      span {
+        line-height: 35px;
+        color: $primary-default;
+        text-transform: capitalize;
+        font-weight: bold;
+      }
+
+      select {
+        border:none;
+      }
+    }
+  }
+}

@@ -1,0 +1,65 @@
+@import "../../../../../styles";
+
+.modal-tasks-day {
+  padding: 40px 40px;
+
+  .modal-tasks-day-header {
+    border-bottom: 1px solid $terceary-little-light;
+    padding-bottom: 10px;
+
+    .add-tasks {
+      font-size: 16px;
+      font-weight: bold;
+
+      i {
+        font-size: 14px;
+        margin-right: 5px;
+      }
+    }
+
+    .text-muted {
+      font-size: 12px;
+      letter-spacing: -0.5px;
+      line-height: 30px;
+      margin-bottom: 0px;
+    }
+  }
+}
+
+.modal-tasks-day-list {
+  height: 225px;
+  overflow-y: auto;
+
+  .form-control {
+    padding-left: 5px;
+    padding-right: 0px;
+    letter-spacing: -0.5px;
+    background: none;
+  }
+
+  .text-danger {
+    font-size: 12px;
+    margin-left: -20px;
+    margin-top: 5px;
+  }
+
+  li {
+    margin: 0px;
+    padding: 7px 5px;
+    border-bottom: 1px solid $terceary-little-light;
+
+    .no-padding {
+      padding-left: 0px;
+    }
+  }
+}
+
+.modal-tasks-day-footer {
+  padding-top: 10px;
+  padding-bottom: 0px;
+  margin: 15px 0px 0px;
+  border-radius: 5px;
+  border: 3px solid $terceary-light;
+  font-size: 12px;
+  font-weight: bold;
+}

@@ -1,0 +1,60 @@
+<div class="user-panel row">
+    <div class="col-xs-5">
+        <section class="user-controller">
+
+            <img src="http://via.placeholder.com/50x50" alt="Nome do Usuário" class="img-circle user-image">
+            <div class="user-title">
+                <h2 class="text-uppercase">{{user.department}}</h2>
+                <h1 class="text-uppercase">{{user.text}}</h1>
+            </div>
+
+            <div class="tabs-pages">
+                <tabset>
+                    <tab heading="histórico">
+                        <plann-task-history></plann-task-history>
+                    </tab>
+
+                    <tab heading="clientes">
+                        <plann-user-clients-permission [showSaveButton]="true"></plann-user-clients-permission>
+                    </tab>
+
+                    <tab heading="projetos">
+                        <plann-user-projects-permission [showSaveButton]="true"></plann-user-projects-permission>
+                    </tab>
+                </tabset>
+            </div>
+        </section>
+    </div>
+
+    <div class="col-xs-3-5">
+        <section class="user-form">
+            <plann-user-register-form [isRegister]="false"></plann-user-register-form>
+        </section>
+    </div>
+
+    <div class="col-xs-3-5">
+        <section class="user-config">
+
+            <div class="user-photo">
+                <img src="http://via.placeholder.com/60x60" alt="Nome do Usuário" class="img-circle user-image">
+
+                <div class="user-photo-titles">
+                    <h3>Altere sua foto</h3>
+                    <label for="user-photo" class="border-radius">Alterar foto</label>
+                    <input type="file" ng2FileSelect [uploader]="uploader" id="user-photo" class="sr-only"/>
+                </div>
+            </div>
+
+            <div class="division"></div>
+
+            <div class="user-config-week">
+                <h3>Configurações de Calendário</h3>
+                <p class="text-uppercase">mostrar no calendário os dias</p>
+                <button class="btn btn-primary text-uppercase" *ngFor="let day of daysOfWeek" [class.active]="day.status"
+                        (click)="changeDayStatus(day)">
+                    {{day.nickName}}
+                </button>
+            </div>
+        </section>
+    </div>
+</div>

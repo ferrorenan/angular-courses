@@ -1,0 +1,26 @@
+<div class="modal-header border-radius-top">
+    <div class="modal-title text-center text-uppercase">
+        <h4><b>adicionando um novo usuário</b></h4>
+    </div>
+</div>
+
+<div class="row">
+    <tabset>
+        <tab heading="Dados do Usuário">
+            <plann-user-register-form #registerForm></plann-user-register-form>
+        </tab>
+        <tab heading="Clientes">
+            <plann-user-clients-permission #clientsPermissions></plann-user-clients-permission>
+        </tab>
+        <tab heading="Projetos">
+            <plann-user-projects-permission #projectsPermissions></plann-user-projects-permission>
+        </tab>
+    </tabset>
+</div>
+
+<div class="modal-footer">
+    <div class="col-xs-12 text-right pull-right">
+        <button class="btn btn-default" (click)="cancelRegister()">Cancelar</button>
+        <button class="btn btn-success" (click)="registerUser()">Salvar</button>
+    </div>
+</div>

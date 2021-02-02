@@ -1,0 +1,146 @@
+<section>
+    <h4>{{project.client}}</h4>
+
+    <h1>{{project.text}}</h1>
+
+    <tabset>
+
+        <tab heading="na fila">
+            <plann-task-overview [taskStatus]="'holding'"></plann-task-overview>
+        </tab>
+
+        <tab heading="em desenvolvimento">
+            <plann-task-overview [taskStatus]="'in-progress'"></plann-task-overview>
+        </tab>
+
+        <tab heading="entregues">
+            <plann-task-overview [taskStatus]="'done'"></plann-task-overview>
+        </tab>
+
+        <tab heading="todas">
+            <plann-task-overview></plann-task-overview>
+        </tab>
+
+    </tabset>
+</section>
+
+<section>
+
+    <div>
+        <div>
+            <h2>tempo estimado</h2>
+            <span>999H</span>
+            <label for="project-estimated-time"></label>
+            <input id="project-estimated-time" type="tel" value="R$ 99.999,99"/>
+        </div>
+
+        <div>
+            <h2>tempo trabalhado</h2>
+            <span>999H</span>
+            <label for="project-worked-time"></label>
+            <input id="project-worked-time" type="tel" value="R$ 99.999,99"/>
+        </div>
+    </div>
+
+    <div>
+        <div>
+            <span>inicio</span>
+            <span>17 fev 2017</span>
+        </div>
+
+        <div>
+            <span>fim</span>
+            <span>17 fev 2017</span>
+        </div>
+
+        <div>
+            <span>total</span>
+            <span>999 dias</span>
+        </div>
+    </div>
+
+    <div>
+        <span>envolvidos:</span>
+
+        <!--TODO for of users-->
+        <ul *ngFor="let user of [1 ,2, 3, 4]">
+            <li *ngIf="false"> <!--TODO if doesn't have users when filtered-->
+                <!--IMAGE-->
+                Ainda não existem envolvidos
+            </li>
+
+            <li>usuario {{user}}</li>
+        </ul>
+    </div>
+
+    <plann-project-form [showTitle]="false" [saveButtonText]="'Salvar Projeto'"></plann-project-form>
+</section>
+
+<section>
+    <h1>Estatística do Projeto</h1>
+    <h4>departamentos envolvidos em horas:</h4>
+
+    <div *ngFor="let department of ['design', 'frontend', 'backend']">
+        <h1>{{department}}</h1>
+
+        <div>
+            <span>orçadas</span>
+            <span>999H</span>
+            <label for="{{department}}-estimated-time"></label>
+            <input id="{{department}}-estimated-time" type="tel" value="R$ 99.999,99"/>
+        </div>
+
+        <div>
+            <span>executadas</span>
+            <span>999H</span>
+            <label for="{{department}}-worked-time"></label>
+            <input id="{{department}}-worked-time" type="tel" value="R$ 99.999,99"/>
+        </div>
+
+        <div>
+            <span>disponíveis</span>
+            <span>999H</span>
+            <label for="{{department}}-available-time"></label>
+            <input id="{{department}}-available-time" type="tel" value="R$ 99.999,99"/>
+        </div>
+
+        <div>
+            <span>diferença</span>
+            <span>999H</span>
+            <label for="{{department}}-result-time"></label>
+            <input id="{{department}}-result-time" type="tel" value="R$ 99.999,99"/>
+        </div>
+    </div>
+
+    <div>
+        <h1>totais</h1>
+
+        <div>
+            <span>orçadas</span>
+            <span>999H</span>
+            <label for="total-estimated-time"></label>
+            <input id="total-estimated-time" type="tel" value="R$ 99.999,99"/>
+        </div>
+
+        <div>
+            <span>executadas</span>
+            <span>999H</span>
+            <label for="total-worked-time"></label>
+            <input id="total-worked-time" type="tel" value="R$ 99.999,99"/>
+        </div>
+
+        <div>
+            <span>disponíveis</span>
+            <span>999H</span>
+            <label for="total-available-time"></label>
+            <input id="total-available-time" type="tel" value="R$ 99.999,99"/>
+        </div>
+
+        <div>
+            <span>diferença</span>
+            <span>999H</span>
+            <label for="total-result-time"></label>
+            <input id="total-result-time" type="tel" value="R$ 99.999,99"/>
+        </div>
+    </div>
+</section>

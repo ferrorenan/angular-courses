@@ -1,0 +1,51 @@
+<div class="row project-permission">
+    <h3 class="text-uppercase">Selecione projetos específicos</h3>
+
+    <ul class="list-unstyled project-accordion-list">
+        <li *ngFor="let project of projects">
+            <accordion>
+                <accordion-group>
+                    <div accordion-heading class="row project-accordion-title">
+                        <div class="col-xs-8 project-accordion-title-name">
+                            <span><b>{{project.text}}</b></span>
+                        </div>
+
+                        <div class="col-xs-4">
+                            <label for="project-{{project.id}}-permission" class="sr-only">Permissão para projetos do
+                                cliente {{project.text}}</label>
+                            <select id="project-{{project.id}}-permission" class="form-control input-sm">
+                                <option value="">Permissão</option>
+                                <option *ngFor="let permission of permissions" [value]="permission">{{permission.text}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <ul class="list-unstyled project-accordion-items">
+                        <li *ngFor="let client of clients" class="row">
+                            <div class="col-xs-8">
+                                <span><i class="glyphicon glyphicon-share-alt"></i> {{client.text}}</span>
+                            </div>
+
+                            <div class="col-xs-4">
+                                <label for="client-{{client.id}}-permission" class="sr-only"></label>
+                                <select id="client-{{client.id}}-permission" class="form-control input-sm">
+                                    <option value="">Permissão</option>
+                                    <option *ngFor="let permission of permissions" [value]="permission">
+                                        {{permission.text}}
+                                    </option>
+                                </select>
+                            </div>
+                        </li>
+                    </ul>
+                </accordion-group>
+            </accordion>
+        </li>
+    </ul>
+
+    <div *ngIf="showSaveButton" class="division"></div>
+
+    <div class="text-right footer-form">
+        <button *ngIf="showSaveButton" class="btn btn-success" (click)="saveProjectsPermission()">Salvar</button>
+    </div>
+</div>

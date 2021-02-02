@@ -1,0 +1,76 @@
+@import "../../../../../styles";
+
+.history-content {
+  padding: 0 45px;
+  max-width: 540px;
+  max-height: 350px;
+  overflow-y: auto;
+  margin: 30px auto;
+
+  .history-date {
+    margin-bottom: 20px;
+    margin-top: 20px;
+
+    .history-title {
+      font-size: 17px;
+      margin-bottom: 10px;
+      color: $primary-default;
+    }
+
+    .history-list {
+
+      .row {
+        position: relative;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        background: url("../../../../../assets/bg-history.svg") repeat-y 52px;
+
+
+        .history-list-date {
+          float: left;
+          width: 45px;
+          line-height: 30px;
+          font-size: 13px;
+        }
+
+        .history-list-pin {
+          width: 15px;
+          height: 15px;
+          padding: 5px 5px 5px 5px;
+          position: absolute;
+          top: 16px;
+          background: white;
+
+          .history-list-circle {
+            float: left;
+            width: 5px;
+            height: 5px;
+            border-radius: 5px;
+            background: #2e465a;
+          }
+        }
+
+        .history-list-img {
+          float: left;
+          padding-left: 25px;
+          margin-right: 10px;
+
+          img {
+            width: 30px;
+            height: 30px;
+          }
+        }
+
+        .history-list-description {
+          float: left;
+          width: calc(100% - 120px);
+          font-size: 13px;
+          color: $primary-default;
+          padding-top: 5px;
+          line-height: 14px;
+        }
+      }
+
+    }
+  }
+}

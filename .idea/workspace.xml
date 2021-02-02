@@ -1,13 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="010566e5-21c9-488f-b712-bbd898c09a6d" name="Default Changelist" comment="" />
+    <list default="true" id="010566e5-21c9-488f-b712-bbd898c09a6d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/angular-course-loiane/primeiro-projeto/src/app/meu-primeiro/meu-primeiro.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular-course-loiane/primeiro-projeto" beforeDir="false" afterPath="$PROJECT_DIR$/angular-course-loiane/primeiro-projeto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular-course-loiane/primeiro-projeto/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/angular-course-loiane/primeiro-projeto/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular-course-loiane/primeiro-projeto/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/angular-course-loiane/primeiro-projeto/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular-course-loiane/primeiro-projeto/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/angular-course-loiane/primeiro-projeto/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular-course-loiane/primeiro-projeto/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/angular-course-loiane/primeiro-projeto/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular-course-loiane/primeiro-projeto/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/angular-course-loiane/primeiro-projeto/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular-course-loiane/primeiro-projeto/tslint.json" beforeDir="false" afterPath="$PROJECT_DIR$/angular-course-loiane/primeiro-projeto/tslint.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-folder" beforeDir="false" afterPath="$PROJECT_DIR$/study-folder" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-folder/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/study-folder/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-folder/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/study-folder/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/study-folder/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/study-folder/src/app/app.module.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/angular-course-loiane/primeiro-projeto" />
+    <option name="ROOT_SYNC" value="SYNC" />
+  </component>
   <component name="ProjectId" id="1nFE3ea7hNUlclzzwOLesTvaF5n" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -29,6 +49,8 @@
       <option name="presentableId" value="Default" />
       <updated>1610977240786</updated>
       <workItem from="1610977241910" duration="291000" />
+      <workItem from="1611018299953" duration="166000" />
+      <workItem from="1611248927365" duration="3000" />
     </task>
     <servers />
   </component>

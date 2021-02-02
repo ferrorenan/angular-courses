@@ -1,0 +1,80 @@
+<div class="modal-header border-radius-top">
+    <h4 class="modal-title text-center text-uppercase" *ngIf="showTitle"><b>Adicionar novo projeto</b></h4>
+</div>
+
+<form [formGroup]="addProjectForm" (ngSubmit)="addProject()" class="form-horizontal">
+
+    <div class="row modal-content-inner">
+
+        <div class="form-group">
+            <label for="project-client" class="col-xs-4 text-right">Nome do Cliente</label>
+
+            <div class="col-xs-6 client-group">
+                <ng-select [allowClear]="true" [items]="clients" (selected)="clientSelected($event)"
+                           placeholder="Selecione um cliente" id="project-client">
+                </ng-select>
+
+                <button type="button" class="no-input add-button"
+                        (click)="addClientModal()">
+                    <i class="glyphicon glyphicon-plus icon-border"></i>
+                </button>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="project-name" class="col-xs-4 text-right">Nome do Projeto</label>
+            <div class="col-xs-6">
+                <input id="project-name" formControlName="name" placeholder="Nome do seu novo projeto"
+                       class="form-control">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-xs-4 text-right">Cor do Projeto</label>
+            <div class="col-xs-6">
+                <div class="btn btn-default btn-div-colors">
+                    <button class="btn-colors no-input" type="button" [(colorPicker)]="formControlValues.color[0]"
+                            [cpPosition]="colorPickerConfig.position" [cpPresetColors]="colorPickerConfig.presetColors"
+                            [cpPresetLabel]="colorPickerConfig.presetLabel"
+                            [style.background]="formControlValues.color[0]">
+                    </button>
+                </div>
+                <span class="text-muted">Serão as cores da suas tarefas</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="project-hour-value" class="col-xs-4 text-right">Valor da Hora</label>
+            <div class="col-xs-3">
+                <input id="project-hour-value" formControlName="value"
+                       placeholder="R$ 100,00" class="form-control">
+            </div>
+            <span class="text-muted">(opcional)</span>
+        </div>
+
+        <div class="form-group">
+            <label for="project-budget-value" class="col-xs-4 text-right">Orçamento</label>
+
+            <div class="col-xs-2">
+                <input id="project-budget-value" formControlName="value" placeholder="0h00" class="form-control">
+            </div>
+
+            <div class="col-xs-4 form-radius">
+                <input id="project-perHour-value" type="radio" formControlName="hoursType" value="hours">
+                <label for="project-perHour-value">horas</label>
+
+                <input id="project-hourMonth-value" type="radio" formControlName="hoursType" value="hoursMonth">
+                <label for="project-hourMonth-value">horas/mês</label>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="modal-footer">
+        <div class="col-xs-12 text-right pull-right">
+            <button type="button" class="btn btn-default" (click)="projectModalRef.hide()">Cancelar</button>
+            <button class="btn btn-success">{{saveButtonText}}</button>
+        </div>
+    </div>
+</form>

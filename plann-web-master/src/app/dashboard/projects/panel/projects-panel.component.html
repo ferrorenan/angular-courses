@@ -1,0 +1,114 @@
+<section class="nav-control-lists">
+    <div class="row">
+        <div class="col-xs-2 col-search">
+            <label for="search-project" class="sr-only">buscar projetos</label>
+            <input #projectSearch (keyup)="0" id="search-project" placeholder="buscar projeto"
+                   class="form-control input-search text-uppercase">
+        </div>
+
+        <div class="col-xs-8">
+
+            <label (click)="toggleOverdueFilter()" class="plann-checkbox" [class.active]="filters.overdue">
+                <span class="text-uppercase">mostrar somente atrasados</span>
+            </label>
+            <span class="text-muted text-separator">|</span>
+
+            <label (click)="toggleDoneFilter()" class="plann-checkbox" [class.active]="filters.done">
+                <span class="text-uppercase">mostrar arquivados</span>
+            </label>
+
+            <div class="text-right pull-right">
+                <span class="text-muted text-separator text-uppercase">ordenar por:</span>
+
+                <label (click)="setOrderParams('due')" class="plann-checkbox"
+                       [class.active]="orderParam === 'due'">
+                    <span class="text-uppercase">prazo</span>
+                </label>
+
+                <span class="text-muted text-separator">|</span>
+
+                <label (click)="setOrderParams('clientName')" class="plann-checkbox"
+                       [class.active]="orderParam === 'clientName'">
+                    <span class="text-uppercase">nome cliente</span>
+                </label>
+
+                <span class="text-muted text-separator">|</span>
+
+                <label (click)="setOrderParams('projectName')" class="plann-checkbox"
+                       [class.active]="orderParam === 'projectName'">
+                    <span class="text-uppercase">nome projeto</span>
+                </label>
+            </div>
+
+        </div>
+
+        <div class="col-xs-2">
+            <button type="button" class="btn btn-success btn-block text-uppercase"
+                    (click)="modalsService.addProjectModal()">
+                adicionar projeto
+            </button>
+        </div>
+    </div>
+
+</section>
+
+<section class="lists-panel">
+
+    <ul class="list-unstyled projects-list">
+        <li *ngIf="!(projects | projectsFilter: projectSearch.value).length" class="list-null">Nenhum projeto
+            encontrado
+        </li>
+        <li class="box-shadow-hover" *ngFor="let project of projects | projectsFilter: projectSearch.value"
+            (click)="goToProjectDetail(project)">
+
+            <div class="project-title" [style.border-color]="project.color">
+
+                <h3 class="text-uppercase">{{project.client}}</h3>
+                <h2 class="text-uppercase">
+
+                    <!--TODO Alterar icone de atrasado - M-->
+                    <!--<i class="glyphicon glyphicon-warning-sign text-danger"></i>-->
+
+                    {{project.text}}
+                </h2>
+            </div>
+
+            <div class="project-times border-radius">
+                <p><strong>1.500</strong><span class="text-muted">horas previstas</span></p>
+                <p><strong>1.400</strong><span class="text-muted">horas já trabalhadas</span></p>
+
+                <!-- TODO Atrasado text-danger, normal text-muted -->
+                <p>
+                    <strong class="text-danger">10</strong>
+                    <span class="text-muted">dias p/ finalizar</span></p>
+            </div>
+
+            <div class="project-bar">
+                <progressbar [value]="70" [type]="'success'"></progressbar>
+            </div>
+
+            <div class="project-footer">
+                <!--
+                    no Icone
+                    Atrasado: text-danger
+                    Completo: text-success
+                    Normal: sem classe
+                -->
+                <p *ngIf="true" class="project-tasks">
+                    <i class="glyphicon glyphicon-list"></i>
+                    {{projects.length}}
+                </p>
+
+                <!--TODO set to true to show complete icon - V-->
+                <p *ngIf="false" class="project-tasks">
+                    <i class="glyphicon glyphicon-ok-circle text-success"></i>
+                    completo
+                </p>
+
+                <p class="text-muted project-update">última atualização: 01 set 2017</p>
+            </div>
+
+        </li>
+    </ul>
+
+</section>

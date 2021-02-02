@@ -1,0 +1,186 @@
+@import "../../../styles";
+
+.task {
+  position: relative;
+  padding: 10px 10px;
+  margin-bottom: 10px;
+  border-left: 3px solid;
+  min-height: 90px;
+
+  // Impedir seleção.
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  .task-title {
+    font-weight: bold;
+    font-size: 14px;
+    margin: 0px 0px 0px 0px;
+    text-overflow: ellipsis;
+    height: 14px;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    z-index: 99;
+  }
+
+  .task-complement {
+    font-size: 12px;
+    font-weight: lighter;
+    margin: 0px 0px 0px 0px;
+    text-overflow: ellipsis;
+    height: 14px;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    z-index: 99;
+  }
+
+  .task-inputs {
+    position: absolute;
+    display: inline-block;
+    width: calc(100% + 3px);
+    border-bottom: 3px solid rgba(0, 0, 0, 0.2);
+    min-height: 80px;
+    top: 0px;
+    left: -3px;
+    border-radius: 5px;
+
+    .task-time-title {
+      font-size: 10px;
+      font-weight: lighter;
+      margin: 10px 0px 0px;
+    }
+
+    .tasks-informations {
+      position: absolute;
+      bottom: 5px;
+      left: 13px;
+    }
+
+    input {
+      color: $contrast;
+      font-size: 12px;
+      float: left;
+
+      &.task-input-time {
+        width: 35%;
+        margin-right: 2px;
+        max-width: 40px;
+      }
+      &.task-input-value {
+        margin-left: 2px;
+        width: 54%;
+      }
+    }
+
+    span {
+      color: $contrast;
+      float: left;
+    }
+
+    &.task-inputs-estimated {
+      min-height: 90px;
+      z-index: 97;
+    }
+
+    &.task-inputs-worked {
+      z-index: 97;
+    }
+    &.z-index {
+      z-index: 98 !important;
+    }
+  }
+}
+
+.task-edit-speed {
+  min-width: 200px;
+  position: relative;
+
+  .text-muted {
+    font-size: 9px;
+    font-weight: normal;
+    font-family: $font-family;
+    letter-spacing: -0.5;
+  }
+
+  .margin-bottom {
+    margin-bottom: 10px;
+  }
+
+  input {
+    font-weight: normal;
+    color: $primary-default;
+  }
+
+  .icons {
+    border-radius: 50%;
+    border: 2px solid;
+    width: 30px;
+    height: 30px;
+    float: left;
+    margin-top: 25px;
+    margin-left: -23px;
+    padding: 4px 7px;
+
+    &.icon-play {
+      border-color: $secundary-default;
+      color: $secundary-default;
+    }
+
+    &.icon-stop {
+      border-color: $negative-default;
+      color: $negative-default;
+      padding-left: 6px;
+    }
+  }
+
+  .task-icons, .task-icons-full {
+    position: absolute;
+    float: left;
+    width: 35px;
+    height: calc(100% + 20px);
+    //background: #3aaeed; set by js
+    top: -10px;
+    right: -45px;
+    padding-top: 3px;
+
+    li {
+      padding: 5px 10px;
+      color: $contrast;
+      //border-bottom: 1px solid #0f9de2; set by js
+
+      &:last-child{
+        border-bottom: none;
+      }
+    }
+  }
+
+  .task-icons-full {
+    width: 180px;
+    right: -190px;
+    margin: 0px;
+    height: calc(100% + 20px) !important;
+
+    li{
+      padding: 4px 4px 3px;
+
+      .no-input {
+        font-size: 12px;
+        font-family: $font-family;
+
+        i {
+          font-size: 14px;
+          margin-right: 10px;
+          margin-left: 0px;
+        }
+      }
+    }
+
+  }
+}
+

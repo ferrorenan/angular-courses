@@ -1,0 +1,170 @@
+<div class="col-xs-2 sidebar">
+
+    <h1 class="sidebar-title">Novas Tarefas</h1>
+
+    <form [formGroup]="addTaskForm" (submit)="addTask()" class="sidebar-form form-horizontal">
+
+        <div class="form-group">
+            <div class="col-sm-12">
+                <ng-select #clientsSelect [allowClear]="true" [items]="clients" (selected)="clientSelected($event)"
+                           placeholder="Qual o cliente?">
+                </ng-select>
+
+                <button type="button" class="no-input add-button" (click)="modalsService.addClientModal()">
+                    <i class="glyphicon glyphicon-plus icon-border"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-12">
+                <ng-select #projectsSelect [allowClear]="true" [items]="projects" (selected)="projectSelected($event)"
+                           placeholder="Qual o projeto?">
+                </ng-select>
+
+                <button type="button" class="no-input add-button" (click)="modalsService.addProjectModal()">
+                    <i class="glyphicon glyphicon-plus icon-border"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-12">
+                <label for="task" class="sr-only">Qual a nova tarefa?</label>
+                <input id="task" formControlName="name" placeholder="Qual a nova tarefa?" class="form-control">
+            </div>
+        </div>
+
+        <button class="btn btn-success btn-block btn-border-bottom text-uppercase">adicionar</button>
+
+    </form>
+
+    <section class="sidebar-tasks">
+        <h2 class="sidebar-title">Em Espera</h2>
+
+        <p *ngIf="!calendar.holding.length" class="text-primary">Não há tarefas em espera</p>
+
+        <ul [dragula]="'tasks'" [dragulaModel]="calendar.holding" class="tasks-waiting list-unstyled">
+
+            <li *ngFor="let item of calendar.holding" class="list-unstyled tasks-lists">
+                <plann-task [subTask]="item" [isHoldingTask]="true"></plann-task>
+            </li>
+        </ul>
+    </section>
+
+</div> <!--new/holding task side menu-->
+
+<div class="col-xs-10 calendar-board">
+
+    <section class="row calendar-control">
+
+        <div class="col-xs-4 calendar-control-week">
+            <button class="btn btn-default" (click)="decreaseWeek()">
+                <i class="glyphicon glyphicon-chevron-left"></i>
+            </button>
+
+            <div class="calendar-week-data text-center">
+                <strong>Semana {{week.ofYear}}</strong>
+                <p>
+                    {{week.firstDay | amDateFormat: 'DD MMM'}}
+                    -
+                    {{week.lastDay | amDateFormat: 'DD MMM'}}
+                </p>
+            </div>
+
+            <button class="btn btn-default" (click)="increaseWeek()">
+                <i class="glyphicon glyphicon-chevron-right"></i>
+            </button>
+
+            <button class="btn btn-default btn-today" (click)="setToday()"> hoje</button>
+        </div>
+
+        <div class="col-xs-5">
+
+            <div class="row">
+                <div class="col-xs-6 calendar-times text-right">
+                    <p class="text-muted">Tempo Estimado</p>
+
+                    <label for="header-estimated-time" class="sr-only">Tempo Estimado</label>
+                    <input id="header-estimated-time" type="tel" value="000h00m"
+                           class="no-input disable-clicks calendar-week-hours">
+                    <!--TODO add time mask-->
+
+                    <label for="header-estimated-value" class="sr-only">Valor Estimado</label>
+                    <input id="header-estimated-value" type="tel" value="R$ 99.999,99"
+                           class="no-input disable-clicks text-muted calendar-week-value">
+                    <!--TODO add money mask-->
+                </div>
+
+                <div class="col-xs-6 calendar-times text-left">
+                    <p class="text-muted">Tempo Trabalhado</p>
+
+                    <label for="header-spent-time" class="sr-only">Valor Trabalhado</label>
+                    <input id="header-spent-time" type="tel" value="000h00m"
+                           class="no-input disable-clicks calendar-week-hours">
+                    <!--TODO add time mask-->
+
+                    <label for="header-spent-value" class="sr-only">Tempo Trabalhado</label>
+                    <input id="header-spent-value" type="tel" value="R$ 99.999,99"
+                           class="no-input disable-clicks text-muted calendar-week-value">
+                    <!--TODO add money mask-->
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-3">
+            <button type="button" class="btn btn-default pull-right btn-users" container="body"
+                    [popover]="popoverTemplate" [placement]="'bottom'" [outsideClick]="true">
+                <span>Nome do Usuário</span>
+                <img src="http://via.placeholder.com/38x38" alt="Nome do Usuário" class="img-circle">
+                <i class="glyphicon glyphicon-chevron-down"></i>
+            </button>
+
+            <ng-template #popoverTemplate>
+                <label for="search-input" class="sr-only">Busque por usuário</label>
+                <input #userSearch (keyup)="0" id="search-input" placeholder="Buscar usuário" class="form-control">
+
+                <span class="users-not-found">Usuário não encontrado</span>
+
+                <ul class="scrollbox list-unstyled lists-users">
+                    <li *ngFor="let user of users | calendarUsersFilter: userSearch.value">
+                        <a>
+                            <img src="http://via.placeholder.com/28x28" alt="Nome do Usuário" class="img-circle">
+                            <span>{{user.text}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </ng-template>
+        </div>
+
+    </section> <!--calendar control-->
+
+    <section class="row calendar-header-week">
+        <div *ngFor="let day of calendar.week.days" class="calendar-header-day" [ngClass]="dayClasses.cols">
+            <strong class="calendar-header-title">{{day.info.format('dddd')}}</strong>
+
+            <div class="calendar-header-information">
+                <label for="week{{day.id}}estimated-time" class="sr-only">Tempo Estimado</label>
+                <input id="week{{day.id}}estimated-time" type="tel" value="00h00m"
+                       class="no-input disable-clicks"> <!--TODO add time mask-->
+                <span> - </span>
+                <label for="week{{day.id}}spend-time" class="sr-only">Tempo Trabalhado</label>
+                <input id="week{{day.id}}spend-time" type="tel" value="00h00m"
+                       class="no-input disable-clicks"> <!--TODO add time mask-->
+            </div>
+
+            <span class="calendar-header-day-number">{{day.info.format('D')}}</span>
+        </div>
+    </section><!-- calendar week header-->
+
+    <section class="row calendar-week">
+        <ul *ngFor="let day of calendar.week.days" [dragula]="'tasks'" [dragulaModel]="day.tasks"
+            class="list-unstyled calendar-day" [ngClass]="dayClasses.cols">
+            <li *ngFor="let task of day.tasks" class="list-unstyled tasks-lists">
+                <plann-task [subTask]="task" [isHoldingTask]="false"></plann-task>
+            </li>
+        </ul> <!--day tasks-->
+    </section> <!--calendar week days-->
+
+</div>

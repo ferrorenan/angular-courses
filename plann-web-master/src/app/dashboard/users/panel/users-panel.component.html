@@ -1,0 +1,49 @@
+<section class="nav-control-lists">
+    <div class="row">
+        <div class="col-xs-2 col-search">
+            <label for="user-search" class="sr-only">buscar usuário</label>
+            <input #userSearch (keyup)="0" id="user-search"
+                   placeholder="buscar usuário" class="form-control input-search text-uppercase">
+        </div>
+
+        <div class="col-xs-5">
+            <label (click)="toggleDepartmentFilter()" class="plann-checkbox" [class.active]="filters.department">
+                <span class="text-uppercase">filtrar por departamento</span>
+            </label>
+
+            <span class="text-muted text-separator">|</span>
+
+            <label (click)="toggleInactiveFilter()" class="plann-checkbox" [class.active]="filters.inactive">
+                <span class="text-uppercase">mostrar desativados</span>
+            </label>
+        </div>
+
+        <div class="col-xs-3 text-right">
+            <span class="text-muted text-search text-uppercase">{{users.length}} usuário(s) cadastrado(s)</span>
+        </div>
+
+        <div class="col-xs-2 text-right">
+            <button type="button" class="btn btn-success btn-block text-uppercase"
+                    (click)="openAddUserModal()">
+                adicionar usuário
+            </button>
+        </div>
+    </div>
+</section>
+
+<section class="lists-panel">
+    <h1 *ngIf="filters.department || filters.inactive" class="text-uppercase">{{listTitle}}</h1>
+    <ul class="list-unstyled users-list">
+
+        <li *ngIf="!(users | usersFilter: userSearch.value).length" class="list-null">Nenhum usuário encontrado</li>
+
+        <li *ngFor="let user of users | usersFilter: userSearch.value" (click)="goToUserDetail(user)"
+            class="text-uppercase box-shadow-hover">
+            <img src="http://via.placeholder.com/50x50" alt="Nome do Usuário" class="img-circle">
+            <h4>{{user.text}}</h4>
+            <p class="text-muted">
+                <span>{{user.department}}</span>
+            </p>
+        </li>
+    </ul>
+</section>

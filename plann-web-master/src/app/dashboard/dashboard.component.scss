@@ -1,0 +1,78 @@
+@import "../../styles";
+
+.navbar {
+  margin-bottom: 0px;
+}
+
+.nav-blue {
+  background: $primary-default;
+}
+
+.navbar-static-top {
+  font-weight: bold;
+  border-bottom: 0px;
+  height: 58px;
+
+  .navbar-header {
+    width: 212px;
+    padding: 15px 25px 10px 35px;
+
+    a {
+
+      img {
+        height: 33px;
+      }
+    }
+  }
+
+  .navbar-menu {
+    .navbar-left {
+      a {
+        color: $contrast;
+        padding-top: 20px;
+        padding-bottom: 15px;
+        padding-left: 25px;
+        padding-right: 25px;
+        font-size: 13px;
+
+        &:hover, &.active, &:active, &:focus{
+          background: $primary-default-hover;
+          border-bottom: 3px solid $secundary-default;
+        }
+
+        i {
+          font-size: 15px;
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+
+  .navbar-right {
+    margin-right: 0px;
+    padding-left: 10px;
+    border-left: 2px solid $primary-default-hover;
+
+    a{
+      padding: 10px;
+
+      &.link-icon {
+        font-size: 16px;
+        color: $terceary-dark;
+        padding: 20px 5px 18px 5px;
+      }
+
+      &:hover, &.active, &:active, &:focus{
+        background: $primary-default-hover;
+      }
+
+      img {
+        height: 38px;
+      }
+    }
+
+  }
+}
+
+
+

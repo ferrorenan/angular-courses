@@ -1,0 +1,106 @@
+<form [formGroup]="registerForm" class="form-horizontal user-form">
+
+    <div class="form-group">
+        <label for="user-name" class="col-xs-4 text-right">Nome</label>
+        <div class="col-xs-6">
+            <input id="user-name" formControlName="name" class="form-control">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="user-email" class="col-xs-4 text-right">E-mail</label>
+        <div class="col-xs-6">
+            <input id="user-email" type="email" formControlName="email" class="form-control">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="user-department" class="col-xs-4 text-right">Departamento</label>
+        <div class="col-xs-6 user-department">
+            <ng-select [allowClear]="true" [items]="departments" (selected)="departmentSelected($event)"
+                       placeholder="Selecione Departamento" id="user-department">
+            </ng-select>
+
+            <button type="button" class="no-input add-button" (click)="openAddDepartmentModal()">
+                <i class="glyphicon glyphicon-plus icon-border"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="form-group" *ngIf="!isRegister">
+        <label for="user-dob" class="col-xs-4 text-right">Nasceu em</label>
+        <div class="col-xs-4">
+            <input id="user-dob" type="date" formControlName="dob" class="form-control">
+        </div>
+        <span class="col-xs-4">99 anos</span>
+    </div>
+
+    <div class="division" *ngIf="!isRegister"></div>
+
+    <div class="form-group" *ngIf="!isRegister">
+        <label for="user-hireDate" class="col-xs-4 text-right">Contratado em</label>
+        <div class="col-xs-4">
+            <input id="user-hireDate" type="date" formControlName="hireDate" class="form-control">
+        </div>
+        <span class="col-xs-4">99 anos</span>
+    </div>
+
+    <div class="form-group">
+        <label for="user-job" class="col-xs-4 text-right">Cargo</label>
+        <div class="col-xs-6">
+            <input id="user-job" formControlName="job" class="form-control">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="user-type" class="col-xs-4 text-right">Tipo de Usuário</label>
+        <div class="col-xs-6">
+            <ng-select [allowClear]="true" [items]="permissions" (selected)="permissionSelected($event)"
+                       placeholder="Qual o tipo do Usuário?" id="user-type">
+            </ng-select>
+        </div>
+    </div>
+
+    <div *ngIf="!isRegister" class="form-group">
+        <label class="col-xs-4 text-right">Timezone</label>
+        <div class="col-xs-6">
+            <ng-select [allowClear]="true" [items]="timezones" (selected)="timezoneSelected($event)"
+                       placeholder="Qual sua timezone?">
+            </ng-select>
+        </div>
+    </div>
+
+    <div class="division" *ngIf="!isRegister"></div>
+
+    <div *ngIf="!isRegister" class="form-group">
+        <label class="col-xs-4 text-right">Financeiro</label>
+        <div class="col-xs-6">
+            <ng-select [allowClear]="true" [items]="finance" (selected)="financeSelected($event)"
+                       placeholder="Qual nível de visualização?">
+            </ng-select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="user-value" class="col-xs-4 text-right">Valor hora</label>
+        <div class="col-xs-6">
+            <input id="user-value" formControlName="value" class="form-control">
+        </div>
+    </div>
+
+    <div class="division" *ngIf="!isRegister"></div>
+
+    <div *ngIf="!isRegister" class="form-group">
+        <label for="user-password" class="col-xs-4 text-right">Senha</label>
+        <div class="col-xs-6">
+            <input id="user-password" type="password" formControlName="password" class="form-control">
+        </div>
+    </div>
+
+</form>
+
+<div *ngIf="!isRegister" class="division"></div>
+
+<div *ngIf="!isRegister" class="text-right footer-form">
+    <button class="btn btn-success" (click)="registerUser()">Salvar dados</button>
+</div>
